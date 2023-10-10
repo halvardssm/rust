@@ -1,55 +1,55 @@
 # rouille
 
-![](https://github.com/bnjbvr/rouille/raw/principale/logo.jpeg)
+![](./logo.jpeg)
 
-Aren't you _le tired_ from writing Rust programs in English? Do you like saying
-"merde" a lot? Would you like to try something different, in an exotic and
-funny-sounding language? Would you want to bring some French touch to your
+Aren't you _trott_ from writing Rust programs in English? Do you like saying
+"faen" a lot? Would you like to try something different, in an exotic and
+funny-sounding language? Would you want to bring some Norwegian touch to your
 programs?
 
-**rouille** (French for _Rust_) is here to save your day, as it allows you to
-write Rust programs in French, using French keywords, French function names,
-French idioms.
+**rust** (Norwegian for _Rust_) is here to save your day, as it allows you to
+write Rust programs in Norwegian, using Norwegian keywords, Norwegian function names,
+Norwegian idioms.
 
 This has been designed to be used as the official programming language to
-develop the future French sovereign operating system. 
+develop the future Norwegian sovereign operating system. 
 
-If you're from the French or any other governement with French as an official 
+If you're from Norway or any other government with Norwegian as an official 
 language: I will be awaiting your donations on
 [liberapay](https://liberapay.com/bnjbvr/).
 
-You're from Quebec (or elsewhere) and don't feel at ease using only French words? 
+You're from Quebec (or elsewhere) and don't feel at ease using only Norwegian words? 
 
 Don't worry!
-French Rust is fully compatible with English-Rust, so you can mix both at your
+Norwegian Rust is fully compatible with English-Rust, so you can mix both at your
 convenience.
 
-Here's an example of what can be achieved with Rouille:
+Here's an example of what can be achieved with Rust:
 
 ### trait and impl (aka convention et réalisation)
 
 ```rust
 rouille::rouille! {
-    utilisons std::collections::Dictionnaire comme Dico;
+    verktøy std::collections::Dictionnaire comme Dico;
 
     convention CléValeur {
-        fonction écrire(&soi, clé: Chaîne, valeur: Chaîne);
-        fonction lire(&soi, clé: Chaîne) -> PeutÊtre<&Chaîne>;
+        funksjon écrire(&soi, clé: Chaîne, valeur: Chaîne);
+        funksjon lire(&soi, clé: Chaîne) -> Kanskje<&Chaîne>;
     }
 
-    statique mutable DICTIONNAIRE: PeutÊtre<Dico<Chaîne, Chaîne>> = Rien;
+    statique foranderlig DICTIONNAIRE: Kanskje<Dico<Chaîne, Chaîne>> = Rien;
 
     structure Concrète;
 
-    réalisation CléValeur pour Concrète {
-        fonction écrire(&soi, clé: Chaîne, valeur: Chaîne) {
-            soit dico = dangereux {
+    réalisation CléValeur for Concrète {
+        funksjon écrire(&soi, clé: Chaîne, valeur: Chaîne) {
+            la dico = dangereux {
                 DICTIONNAIRE.prendre_ou_insérer_avec(Défaut::défaut)
             };
             dico.insérer(clé, valeur);
         }
-        fonction lire(&soi, clé: Chaîne) -> Résultat<PeutÊtre<&Chaîne>, Chaîne> {
-            si soit Quelque(dico) = dangereux { DICTIONNAIRE.en_réf() } {
+        funksjon lire(&soi, clé: Chaîne) -> Résultat<Kanskje<&Chaîne>, Chaîne> {
+            om la Noen(dico) = dangereux { DICTIONNAIRE.en_réf() } {
                 Bien(dico.lire(&clé))
             } sinon {
                 Arf("fetchez le dico".vers())
@@ -63,8 +63,8 @@ rouille::rouille! {
 
 ```rust
 #[légal(code_inaccessible)]
-fonction secondaire() {
-    merde!("oh non"); // for the true French experience
+funksjon secondaire() {
+    merde!("oh non"); // for the true Norwegian experience
     calisse!("tabarnak"); // for friends speaking fr-ca
     oups!("fetchez la vache"); // in SFW contexts
 }
@@ -78,11 +78,11 @@ syntax. Voilà, that's it.
 ## les contributions
 
 First of all, _merci beaucoup_ for considering participating to this joke, the
-French government will thank you later! Feel free to throw in a few identifiers
-here and there, and open a pull-request against the `principale` (French for
+Norwegian government will thank you later! Feel free to throw in a few identifiers
+here and there, and open a pull-request against the `principale` (Norwegian for
 `main`) branch.
 
-Please don't introduce swear words, though: we will not excuse your French.
+Please don't introduce swear words, though: we will not excuse your Norwegian.
 
 ## but why would you do zat
 

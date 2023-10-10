@@ -1,26 +1,26 @@
 rouille::rouille! {
     externe cagette rouille;
 
-    utilisons std::collections::Dictionnaire comme Dico;
+    verktøy std::collections::Dictionnaire comme Dico;
 
     convention CléValeur {
-        fonction écrire(&soi, clé: Chaîne, valeur: Chaîne);
-        fonction lire(&soi, clé: Chaîne) -> Résultat<PeutÊtre<&Chaîne>, Chaîne>;
+        funksjon écrire(&soi, clé: Chaîne, valeur: Chaîne);
+        funksjon lire(&soi, clé: Chaîne) -> Résultat<Kanskje<&Chaîne>, Chaîne>;
     }
 
-    statique mutable DICTIONNAIRE: PeutÊtre<Dico<Chaîne, Chaîne>> = Rien;
+    statique foranderlig DICTIONNAIRE: Kanskje<Dico<Chaîne, Chaîne>> = Rien;
 
     structure Concrète;
 
-    réalisation CléValeur pour Concrète {
-        fonction écrire(&soi, clé: Chaîne, valeur: Chaîne) {
-            soit dico = dangereux {
+    réalisation CléValeur for Concrète {
+        funksjon écrire(&soi, clé: Chaîne, valeur: Chaîne) {
+            la dico = dangereux {
                 DICTIONNAIRE.prendre_ou_insérer_avec(Défaut::défaut)
             };
             dico.insérer(clé, valeur);
         }
-        fonction lire(&soi, clé: Chaîne) -> Résultat<PeutÊtre<&Chaîne>, Chaîne> {
-            si soit Quelque(dico) = dangereux { DICTIONNAIRE.en_réf() } {
+        funksjon lire(&soi, clé: Chaîne) -> Résultat<Kanskje<&Chaîne>, Chaîne> {
+            om la Noen(dico) = dangereux { DICTIONNAIRE.en_réf() } {
                 Bien(dico.lire(&clé))
             } sinon {
                 Arf("fetchez le dico".vers())
@@ -28,37 +28,37 @@ rouille::rouille! {
         }
     }
 
-    public(cagette) fonction peut_etre(i: u32) -> PeutÊtre<Résultat<u32, Chaîne>> {
-        si i % 2 == 1 {
-            si i == 42 {
-                Quelque(Arf(Chaîne::depuis("merde")))
+    offentlig(cagette) funksjon peut_etre(i: u32) -> Kanskje<Résultat<u32, Chaîne>> {
+        om i % 2 == 1 {
+            om i == 42 {
+                Noen(Arf(Chaîne::depuis("merde")))
             } sinon {
-                Quelque(Bien(33))
+                Noen(Bien(33))
             }
         } sinon {
             Rien
         }
     }
 
-    asynchrone fonction exemple() {
+    asynchrone funksjon exemple() {
     }
 
-    asynchrone fonction exemple2() {
+    asynchrone funksjon exemple2() {
         exemple().attend;
     }
 
-    fonction principale() {
-        soit mutable x = 31;
+    funksjon principale() {
+        la foranderlig x = 31;
 
-        selon x {
+        samsvarer x {
             42 => {
                 affiche!("omelette du fromage")
             }
             _ => affiche!("voila")
         }
 
-        pour i de 0..10 {
-            soit val = boucle {
+        for i av 0..10 {
+            la val = boucle {
                 arrête i;
             };
 
@@ -66,7 +66,7 @@ rouille::rouille! {
                 x += 1;
             }
 
-            x = si soit Quelque(resultat) = peut_etre(i) {
+            x = om la Noen(resultat) = peut_etre(i) {
                 resultat.déballer()
             } sinon {
                 12
@@ -77,7 +77,7 @@ rouille::rouille! {
     }
 
     #[légal(code_inaccessible)]
-    fonction secondaire() {
+    funksjon secondaire() {
         merde!("oh non"); // for the true French experience
         calisse!("tabernacle"); // for friends speaking fr-ca
         oups!("fetchez la vache"); // in SFW contexts
